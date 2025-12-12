@@ -47,6 +47,7 @@ let btnSeven = document.querySelector('#btnSeven');
 let btnEight = document.querySelector('#btnEight');
 let btnNine = document.querySelector('#btnNine');
 let btnZero = document.querySelector('#btnZero');
+// let btnNumber = document.querySelectorAll('.btn-number');
 let btnAdd = document.querySelector('#btnAdd');
 let btnSubtract = document.querySelector('#btnSubtract');
 let btnMultiply = document.querySelector('#btnMultiply');
@@ -57,12 +58,8 @@ btnOne.addEventListener('click', e => {
     e.preventDefault();
     if (display.textContent === "0") {
         display.textContent = `${e.target.textContent}`;
-        number1 = e.target.textContent;
-        console.log(number1)
     } else {
         display.textContent += `${e.target.textContent}`;
-        number2 = e.target.textContent;
-        console.log(number2);
     }
 });
 
@@ -70,12 +67,8 @@ btnTwo.addEventListener('click', e => {
     e.preventDefault();
     if (display.textContent === "0") {
         display.textContent = `${e.target.textContent}`;
-        number1 = e.target.textContent;
-        console.log(number1)
     } else {
         display.textContent += `${e.target.textContent}`;
-        number2 = e.target.textContent;
-        console.log(number2);
     }
 });
 
@@ -83,12 +76,8 @@ btnThree.addEventListener('click', e => {
     e.preventDefault();
     if (display.textContent === "0") {
         display.textContent = `${e.target.textContent}`;
-        number1 = e.target.textContent;
-        console.log(number1)
     } else {
         display.textContent += `${e.target.textContent}`;
-        number2 = e.target.textContent;
-        console.log(number2);
     }
 });
 
@@ -96,12 +85,8 @@ btnFour.addEventListener('click', e => {
     e.preventDefault();
     if (display.textContent === "0") {
         display.textContent = `${e.target.textContent}`;
-        number1 = e.target.textContent;
-        console.log(number1)
     } else {
         display.textContent += `${e.target.textContent}`;
-        number2 = e.target.textContent;
-        console.log(number2);
     }
 });
 
@@ -109,12 +94,8 @@ btnFive.addEventListener('click', e => {
     e.preventDefault();
     if (display.textContent === "0") {
         display.textContent = `${e.target.textContent}`;
-        number1 = e.target.textContent;
-        console.log(number1)
     } else {
         display.textContent += `${e.target.textContent}`;
-        number2 = e.target.textContent;
-        console.log(number2);
     }
 });
 
@@ -122,12 +103,8 @@ btnSix.addEventListener('click', e => {
     e.preventDefault();
     if (display.textContent === "0") {
         display.textContent = `${e.target.textContent}`;
-        number1 = e.target.textContent;
-        console.log(number1)
     } else {
         display.textContent += `${e.target.textContent}`;
-        number2 = e.target.textContent;
-        console.log(number2);
     }
 });
 
@@ -135,12 +112,8 @@ btnSeven.addEventListener('click', e => {
     e.preventDefault();
     if (display.textContent === "0") {
         display.textContent = `${e.target.textContent}`;
-        number1 = e.target.textContent;
-        console.log(number1)
     } else {
         display.textContent += `${e.target.textContent}`;
-        number2 = e.target.textContent;
-        console.log(number2);
     }
 });
 
@@ -148,12 +121,8 @@ btnEight.addEventListener('click', e => {
     e.preventDefault();
     if (display.textContent === "0") {
         display.textContent = `${e.target.textContent}`;
-        number1 = e.target.textContent;
-        console.log(number1)
     } else {
         display.textContent += `${e.target.textContent}`;
-        number2 = e.target.textContent;
-        console.log(number2);
     }
 });
 
@@ -161,12 +130,8 @@ btnNine.addEventListener('click', e => {
     e.preventDefault();
     if (display.textContent === "0") {
         display.textContent = `${e.target.textContent}`;
-        number1 = e.target.textContent;
-        console.log(number1)
     } else {
         display.textContent += `${e.target.textContent}`;
-        number2 = e.target.textContent;
-        console.log(number2);
     }
 });
 
@@ -174,12 +139,8 @@ btnZero.addEventListener('click', e => {
     e.preventDefault();
     if (display.textContent === "0") {
         display.textContent = `${e.target.textContent}`;
-        number1 = e.target.textContent;
-        console.log(number1)
     } else {
         display.textContent += `${e.target.textContent}`;
-        number2 = e.target.textContent;
-        console.log(number2);
     }
 });
 
@@ -194,29 +155,29 @@ btnClear.addEventListener('click', e => {
 
 btnAdd.addEventListener('click', e => {
     e.preventDefault();
-    result += Number(display.textContent);
-    console.log(result);
-    display.textContent += "+"; 
+    number1 = Number(display.textContent);
+    console.log(number1);
+    display.textContent += "+";
 })
 
 btnSubtract.addEventListener('click', e => {
     e.preventDefault();
-    result -= Number(display.textContent);
-    console.log(result);
+    number1 = Number(display.textContent);
+    console.log(number1);
     display.textContent += "-"; 
 })
 
 btnMultiply.addEventListener('click', e => {
     e.preventDefault();
-    result *= Number(display.textContent);
-    console.log(result);
+    number1 = Number(display.textContent);
+    console.log(number1);
     display.textContent += "*"; 
 })
 
 btnDivide.addEventListener('click', e => {
     e.preventDefault();
-    result /= Number(display.textContent);
-    console.log(result);
+    number1 = Number(display.textContent);
+    console.log(number1);
     display.textContent += "/"; 
 })
 
