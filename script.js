@@ -25,13 +25,13 @@ display.textContent = "0";
 
 function operate(oper, n1, n2) {
     if (oper === "+") {
-        add(n1, n2);
+        return add(n1, n2);
     } else if (oper === "-") {
-        subtract(n1, n2);
+        return subtract(n1, n2);
     } else if (oper === "*") {
-        multiply(n1, n2);
+        return multiply(n1, n2);
     } else if (oper === "/") {
-        divide(n1, n2);
+        return divide(n1, n2);
     }
 }
 
@@ -47,7 +47,6 @@ let btnSeven = document.querySelector('#btnSeven');
 let btnEight = document.querySelector('#btnEight');
 let btnNine = document.querySelector('#btnNine');
 let btnZero = document.querySelector('#btnZero');
-// let btnNumber = document.querySelectorAll('.btn-number');
 let btnAdd = document.querySelector('#btnAdd');
 let btnSubtract = document.querySelector('#btnSubtract');
 let btnMultiply = document.querySelector('#btnMultiply');
@@ -158,13 +157,15 @@ btnAdd.addEventListener('click', e => {
     number1 = Number(display.textContent);
     console.log(number1);
     display.textContent += "+";
+    operator = "+";
 })
 
 btnSubtract.addEventListener('click', e => {
     e.preventDefault();
     number1 = Number(display.textContent);
     console.log(number1);
-    display.textContent += "-"; 
+    display.textContent += "-";
+    operator = "-";
 })
 
 btnMultiply.addEventListener('click', e => {
@@ -172,17 +173,21 @@ btnMultiply.addEventListener('click', e => {
     number1 = Number(display.textContent);
     console.log(number1);
     display.textContent += "*"; 
+    operator = "*";
 })
 
 btnDivide.addEventListener('click', e => {
     e.preventDefault();
     number1 = Number(display.textContent);
     console.log(number1);
-    display.textContent += "/"; 
+    display.textContent += "/";
+    operator = "/";
 })
 
 btnEqual.addEventListener('click', e => {
     e.preventDefault();
-    console.log(result);
-    display.textContent = `${result}`;
+    number2 = Number(display.textContent.slice(display.textContent.indexOf(`${number1.length}` + 1)));
+    console.log(number2);
+    result = operate(operator, number1, number2);
+    display.textContent = result;
 })
