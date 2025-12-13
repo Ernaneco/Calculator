@@ -35,7 +35,7 @@ function operate(oper, n1, n2) {
     }
 }
 
-// Create variables to buttons
+// Create buttons variables
 let btnClear = document.querySelector('#btnClear');
 let btnOne = document.querySelector('#btnOne');
 let btnTwo = document.querySelector('#btnTwo');
@@ -149,7 +149,7 @@ btnClear.addEventListener('click', e => {
     number1 = 0;
     number2 = 0;
     operator = "";
-    result = 0;
+    result = "";
 });
 
 btnAdd.addEventListener('click', e => {
@@ -186,8 +186,8 @@ btnDivide.addEventListener('click', e => {
 
 btnEqual.addEventListener('click', e => {
     e.preventDefault();
-    number2 = Number(display.textContent.slice(display.textContent.indexOf(`${number1.length}` + 1)));
-    console.log(number2);
+    console.log(display.textContent.slice(`${number1}`.length + 1));
+    number2 = Number(display.textContent.slice(`${number1}`.length + 1));
     result = operate(operator, number1, number2);
     display.textContent = result;
 })

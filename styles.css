@@ -13,11 +13,15 @@
     width: 100%;
     text-align: right;
     vertical-align: bottom;
+    background-color: aliceblue;
     font-size: 24px;
 }
 
 .btn {
-    width: 33%;
+    width: 33.3%;
+    background-color: blue;
+    color: aliceblue;
+    font-size: 16px;
 }
 
 
