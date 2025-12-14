@@ -53,18 +53,24 @@ let btnMultiply = document.querySelector('#btnMultiply');
 let btnDivide = document.querySelector('#btnDivide');
 let btnEqual = document.querySelector('#btnEqual');
 
+// Conditions to evaluate numbers
+// let isDisplayEmpty = display.textContent === "0";
+// let isDisplayNumber1 = display.textContent.includes(`${number1}`);
+// let isNumber2Empty = (number1 && operator);
+// let isNumber2Yet = (operator && number2);
+
 btnOne.addEventListener('click', e => {
     e.preventDefault();
-    if (display.textContent === "0") {
+    if (display.textContent === "0" || operator !== "") {
         display.textContent = `${e.target.textContent}`;
     } else {
-        display.textContent += `${e.target.textContent}`;
+        display.textContent += `${e.target.textContent}`
     }
 });
 
 btnTwo.addEventListener('click', e => {
     e.preventDefault();
-    if (display.textContent === "0") {
+    if (display.textContent === "0" || operator !== "") {
         display.textContent = `${e.target.textContent}`;
     } else {
         display.textContent += `${e.target.textContent}`;
@@ -73,7 +79,7 @@ btnTwo.addEventListener('click', e => {
 
 btnThree.addEventListener('click', e => {
     e.preventDefault();
-    if (display.textContent === "0") {
+    if (display.textContent === "0" || operator !== "") {
         display.textContent = `${e.target.textContent}`;
     } else {
         display.textContent += `${e.target.textContent}`;
@@ -82,7 +88,7 @@ btnThree.addEventListener('click', e => {
 
 btnFour.addEventListener('click', e => {
     e.preventDefault();
-    if (display.textContent === "0") {
+    if (display.textContent === "0" || operator !== "") {
         display.textContent = `${e.target.textContent}`;
     } else {
         display.textContent += `${e.target.textContent}`;
@@ -91,7 +97,7 @@ btnFour.addEventListener('click', e => {
 
 btnFive.addEventListener('click', e => {
     e.preventDefault();
-    if (display.textContent === "0") {
+    if (display.textContent === "0" || operator !== "") {
         display.textContent = `${e.target.textContent}`;
     } else {
         display.textContent += `${e.target.textContent}`;
@@ -100,7 +106,7 @@ btnFive.addEventListener('click', e => {
 
 btnSix.addEventListener('click', e => {
     e.preventDefault();
-    if (display.textContent === "0") {
+    if (display.textContent === "0" || operator !== "") {
         display.textContent = `${e.target.textContent}`;
     } else {
         display.textContent += `${e.target.textContent}`;
@@ -109,7 +115,7 @@ btnSix.addEventListener('click', e => {
 
 btnSeven.addEventListener('click', e => {
     e.preventDefault();
-    if (display.textContent === "0") {
+    if (display.textContent === "0" || operator !== "") {
         display.textContent = `${e.target.textContent}`;
     } else {
         display.textContent += `${e.target.textContent}`;
@@ -118,7 +124,7 @@ btnSeven.addEventListener('click', e => {
 
 btnEight.addEventListener('click', e => {
     e.preventDefault();
-    if (display.textContent === "0") {
+    if (display.textContent === "0" || operator !== "") {
         display.textContent = `${e.target.textContent}`;
     } else {
         display.textContent += `${e.target.textContent}`;
@@ -127,7 +133,7 @@ btnEight.addEventListener('click', e => {
 
 btnNine.addEventListener('click', e => {
     e.preventDefault();
-    if (display.textContent === "0") {
+    if (display.textContent === "0" || operator !== "") {
         display.textContent = `${e.target.textContent}`;
     } else {
         display.textContent += `${e.target.textContent}`;
@@ -136,7 +142,7 @@ btnNine.addEventListener('click', e => {
 
 btnZero.addEventListener('click', e => {
     e.preventDefault();
-    if (display.textContent === "0") {
+    if (display.textContent === "0" || operator !== "") {
         display.textContent = `${e.target.textContent}`;
     } else {
         display.textContent += `${e.target.textContent}`;
@@ -146,48 +152,96 @@ btnZero.addEventListener('click', e => {
 btnClear.addEventListener('click', e => {
     e.preventDefault();
     display.textContent = "0";
-    number1 = 0;
-    number2 = 0;
+    number1 = "";
+    number2 = "";
     operator = "";
     result = "";
 });
 
 btnAdd.addEventListener('click', e => {
     e.preventDefault();
-    number1 = Number(display.textContent);
-    console.log(number1);
-    display.textContent += "+";
-    operator = "+";
+    e.target.style.backgroundColor = 'darkblue';
+    setTimeout(() => {
+        e.target.style.backgroundColor = 'blue';
+    }, 2000);
+    if (number1 === "") {
+        number1 = Number(display.textContent);
+        operator = "+";
+        display.textContent = operator;
+    } else {
+        number2 = Number(display.textContent);
+        result = operate(operator, number1, number2)
+        number1 = result;
+        display.textContent = result;
+        operator = "+";
+    }
 })
 
 btnSubtract.addEventListener('click', e => {
     e.preventDefault();
-    number1 = Number(display.textContent);
-    console.log(number1);
-    display.textContent += "-";
-    operator = "-";
+    e.target.style.backgroundColor = 'darkblue';
+    setTimeout(() => {
+        e.target.style.backgroundColor = 'blue';
+    }, 2000);
+    if (number1 === "") {
+        number1 = Number(display.textContent);
+        operator = "-";
+        display.textContent = operator;
+    } else {
+        number2 = Number(display.textContent);
+        result = operate(operator, number1, number2)
+        number1 = result;
+        display.textContent = result;
+        operator = "-";
+    }
 })
 
 btnMultiply.addEventListener('click', e => {
     e.preventDefault();
-    number1 = Number(display.textContent);
-    console.log(number1);
-    display.textContent += "*"; 
-    operator = "*";
+    e.target.style.backgroundColor = 'darkblue';
+    setTimeout(() => {
+        e.target.style.backgroundColor = 'blue';
+    }, 2000);
+    if (number1 === "") {
+        number1 = Number(display.textContent);
+        operator = "*";
+        display.textContent = operator;
+    } else {
+        number2 = Number(display.textContent);
+        result = operate(operator, number1, number2)
+        number1 = result;
+        display.textContent = result;
+        operator = "*";
+    }
 })
 
 btnDivide.addEventListener('click', e => {
     e.preventDefault();
-    number1 = Number(display.textContent);
-    console.log(number1);
-    display.textContent += "/";
-    operator = "/";
+    e.target.style.backgroundColor = 'darkblue';
+    setTimeout(() => {
+        e.target.style.backgroundColor = 'blue';
+    }, 2000);
+    if (number1 === "") {
+        number1 = Number(display.textContent);
+        operator = "/";
+        display.textContent = operator;
+    } else {
+        number2 = Number(display.textContent);
+        result = operate(operator, number1, number2)
+        number1 = result;
+        display.textContent = result;
+        operator = "/";
+    }
 })
 
 btnEqual.addEventListener('click', e => {
     e.preventDefault();
-    console.log(display.textContent.slice(`${number1}`.length + 1));
-    number2 = Number(display.textContent.slice(`${number1}`.length + 1));
-    result = operate(operator, number1, number2);
+    e.target.style.backgroundColor = 'darkblue';
+    setTimeout(() => {
+        e.target.style.backgroundColor = 'blue';
+    }, 2000);
+    number2 = Number(display.textContent);
+    result = operate(operator, number1, number2)
+    number1 = result;
     display.textContent = result;
 })
