@@ -59,95 +59,26 @@ let btnEqual = document.querySelector('#btnEqual');
 // let isNumber2Empty = (number1 && operator);
 // let isNumber2Yet = (operator && number2);
 
-btnOne.addEventListener('click', e => {
+// Create function to display the numbers on the screen
+function getNumber(e) {
     e.preventDefault();
     if (display.textContent === "0" || operator !== "") {
         display.textContent = `${e.target.textContent}`;
     } else {
         display.textContent += `${e.target.textContent}`
     }
-});
+}
 
-btnTwo.addEventListener('click', e => {
-    e.preventDefault();
-    if (display.textContent === "0" || operator !== "") {
-        display.textContent = `${e.target.textContent}`;
-    } else {
-        display.textContent += `${e.target.textContent}`;
-    }
-});
-
-btnThree.addEventListener('click', e => {
-    e.preventDefault();
-    if (display.textContent === "0" || operator !== "") {
-        display.textContent = `${e.target.textContent}`;
-    } else {
-        display.textContent += `${e.target.textContent}`;
-    }
-});
-
-btnFour.addEventListener('click', e => {
-    e.preventDefault();
-    if (display.textContent === "0" || operator !== "") {
-        display.textContent = `${e.target.textContent}`;
-    } else {
-        display.textContent += `${e.target.textContent}`;
-    }
-});
-
-btnFive.addEventListener('click', e => {
-    e.preventDefault();
-    if (display.textContent === "0" || operator !== "") {
-        display.textContent = `${e.target.textContent}`;
-    } else {
-        display.textContent += `${e.target.textContent}`;
-    }
-});
-
-btnSix.addEventListener('click', e => {
-    e.preventDefault();
-    if (display.textContent === "0" || operator !== "") {
-        display.textContent = `${e.target.textContent}`;
-    } else {
-        display.textContent += `${e.target.textContent}`;
-    }
-});
-
-btnSeven.addEventListener('click', e => {
-    e.preventDefault();
-    if (display.textContent === "0" || operator !== "") {
-        display.textContent = `${e.target.textContent}`;
-    } else {
-        display.textContent += `${e.target.textContent}`;
-    }
-});
-
-btnEight.addEventListener('click', e => {
-    e.preventDefault();
-    if (display.textContent === "0" || operator !== "") {
-        display.textContent = `${e.target.textContent}`;
-    } else {
-        display.textContent += `${e.target.textContent}`;
-    }
-});
-
-btnNine.addEventListener('click', e => {
-    e.preventDefault();
-    if (display.textContent === "0" || operator !== "") {
-        display.textContent = `${e.target.textContent}`;
-    } else {
-        display.textContent += `${e.target.textContent}`;
-    }
-});
-
-btnZero.addEventListener('click', e => {
-    e.preventDefault();
-    if (display.textContent === "0" || operator !== "") {
-        display.textContent = `${e.target.textContent}`;
-    } else {
-        display.textContent += `${e.target.textContent}`;
-    }
-});
+btnOne.addEventListener('click', getNumber);
+btnTwo.addEventListener('click', getNumber);
+btnThree.addEventListener('click', getNumber);
+btnFour.addEventListener('click', getNumber);
+btnFive.addEventListener('click', getNumber);
+btnSix.addEventListener('click', getNumber);
+btnSeven.addEventListener('click', getNumber);
+btnEight.addEventListener('click', getNumber);
+btnNine.addEventListener('click', getNumber);
+btnZero.addEventListener('click', getNumber);
 
 btnClear.addEventListener('click', e => {
     e.preventDefault();
@@ -227,10 +158,14 @@ btnDivide.addEventListener('click', e => {
         display.textContent = operator;
     } else {
         number2 = Number(display.textContent);
-        result = operate(operator, number1, number2)
-        number1 = result;
-        display.textContent = result;
-        operator = "/";
+        if (number2 === 0) {
+            display.textContent = "Error";
+        } else {
+            result = operate(operator, number1, number2)
+            number1 = result;
+            display.textContent = result;
+            operator = "/";
+        }
     }
 })
 
