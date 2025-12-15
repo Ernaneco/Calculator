@@ -53,12 +53,6 @@ let btnMultiply = document.querySelector('#btnMultiply');
 let btnDivide = document.querySelector('#btnDivide');
 let btnEqual = document.querySelector('#btnEqual');
 
-// Conditions to evaluate numbers
-// let isDisplayEmpty = display.textContent === "0";
-// let isDisplayNumber1 = display.textContent.includes(`${number1}`);
-// let isNumber2Empty = (number1 && operator);
-// let isNumber2Yet = (operator && number2);
-
 // Create function to display the numbers on the screen
 function getNumber(e) {
     e.preventDefault();
@@ -101,10 +95,14 @@ btnAdd.addEventListener('click', e => {
         display.textContent = operator;
     } else {
         number2 = Number(display.textContent);
-        result = operate(operator, number1, number2)
-        number1 = result;
-        display.textContent = result;
-        operator = "+";
+        if (number2 === 0 && operator === "/") {
+            alert("Error!")
+        } else {
+            result = operate(operator, number1, number2)
+            number1 = result;
+            display.textContent = result;
+            operator = "+";
+        }
     }
 })
 
@@ -120,10 +118,14 @@ btnSubtract.addEventListener('click', e => {
         display.textContent = operator;
     } else {
         number2 = Number(display.textContent);
-        result = operate(operator, number1, number2)
-        number1 = result;
-        display.textContent = result;
-        operator = "-";
+        if (number2 === 0 && operator === "/") {
+            alert("Error!")
+        } else {
+            result = operate(operator, number1, number2)
+            number1 = result;
+            display.textContent = result;
+            operator = "-";
+        }
     }
 })
 
@@ -139,12 +141,15 @@ btnMultiply.addEventListener('click', e => {
         display.textContent = operator;
     } else {
         number2 = Number(display.textContent);
+        if (number2 === 0 && operator === "/") {
+            alert("Error!")
+        }
         result = operate(operator, number1, number2)
         number1 = result;
         display.textContent = result;
         operator = "*";
-    }
-})
+        }
+    })
 
 btnDivide.addEventListener('click', e => {
     e.preventDefault();
@@ -158,8 +163,8 @@ btnDivide.addEventListener('click', e => {
         display.textContent = operator;
     } else {
         number2 = Number(display.textContent);
-        if (number2 === 0) {
-            display.textContent = "Error";
+        if (number2 === 0 && operator === "/") {
+            alert("Error!")
         } else {
             result = operate(operator, number1, number2)
             number1 = result;
@@ -167,7 +172,7 @@ btnDivide.addEventListener('click', e => {
             operator = "/";
         }
     }
-})
+});
 
 btnEqual.addEventListener('click', e => {
     e.preventDefault();
@@ -176,7 +181,11 @@ btnEqual.addEventListener('click', e => {
         e.target.style.backgroundColor = 'blue';
     }, 2000);
     number2 = Number(display.textContent);
-    result = operate(operator, number1, number2)
-    number1 = result;
-    display.textContent = result;
+    if (number2 === 0) {
+        alert("Error!")
+    } else {
+        result = operate(operator, number1, number2)
+        number1 = result;
+        display.textContent = result;
+    }
 })
