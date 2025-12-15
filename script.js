@@ -19,6 +19,7 @@ let number1 = "";
 let operator = "";
 let number2 = "";
 let result = 0;
+let lastButton = "";
 let container = document.querySelector('.container');
 let display = document.querySelector('#display');
 display.textContent = "0";
@@ -56,11 +57,13 @@ let btnEqual = document.querySelector('#btnEqual');
 // Create function to display the numbers on the screen
 function getNumber(e) {
     e.preventDefault();
-    if (display.textContent === "0" || operator !== "") {
+    if (display.textContent === "0" || 
+        lastButton === "+" || lastButton === "-" || lastButton === "*" || lastButton === "/" || lastButton === "=") {
         display.textContent = `${e.target.textContent}`;
     } else {
+        console.log(number1, number2, operator, e.target.textContent);
         display.textContent += `${e.target.textContent}`
-    }
+    } lastButton = e.target.textContent;
 }
 
 btnOne.addEventListener('click', getNumber);
@@ -88,7 +91,7 @@ btnAdd.addEventListener('click', e => {
     e.target.style.backgroundColor = 'darkblue';
     setTimeout(() => {
         e.target.style.backgroundColor = 'blue';
-    }, 2000);
+    }, 1000);
     if (number1 === "") {
         number1 = Number(display.textContent);
         operator = "+";
@@ -98,12 +101,13 @@ btnAdd.addEventListener('click', e => {
         if (number2 === 0 && operator === "/") {
             alert("Error!")
         } else {
-            result = operate(operator, number1, number2)
-            number1 = result;
+            result = operate(operator, number1, number2);
             display.textContent = result;
+            number1 = result;
+            number2 = "";
             operator = "+";
         }
-    }
+    } lastButton = "+";
 })
 
 btnSubtract.addEventListener('click', e => {
@@ -111,7 +115,7 @@ btnSubtract.addEventListener('click', e => {
     e.target.style.backgroundColor = 'darkblue';
     setTimeout(() => {
         e.target.style.backgroundColor = 'blue';
-    }, 2000);
+    }, 1000);
     if (number1 === "") {
         number1 = Number(display.textContent);
         operator = "-";
@@ -121,12 +125,13 @@ btnSubtract.addEventListener('click', e => {
         if (number2 === 0 && operator === "/") {
             alert("Error!")
         } else {
-            result = operate(operator, number1, number2)
-            number1 = result;
+            result = operate(operator, number1, number2);
             display.textContent = result;
+            number1 = result;
+            number2 = "";
             operator = "-";
         }
-    }
+    } lastButton = "-";
 })
 
 btnMultiply.addEventListener('click', e => {
@@ -134,7 +139,7 @@ btnMultiply.addEventListener('click', e => {
     e.target.style.backgroundColor = 'darkblue';
     setTimeout(() => {
         e.target.style.backgroundColor = 'blue';
-    }, 2000);
+    }, 1000);
     if (number1 === "") {
         number1 = Number(display.textContent);
         operator = "*";
@@ -144,11 +149,12 @@ btnMultiply.addEventListener('click', e => {
         if (number2 === 0 && operator === "/") {
             alert("Error!")
         }
-        result = operate(operator, number1, number2)
-        number1 = result;
+        result = operate(operator, number1, number2);
         display.textContent = result;
+        number1 = result;
+        number2 = "";
         operator = "*";
-        }
+        } lastButton = "*";
     })
 
 btnDivide.addEventListener('click', e => {
@@ -156,7 +162,7 @@ btnDivide.addEventListener('click', e => {
     e.target.style.backgroundColor = 'darkblue';
     setTimeout(() => {
         e.target.style.backgroundColor = 'blue';
-    }, 2000);
+    }, 1000);
     if (number1 === "") {
         number1 = Number(display.textContent);
         operator = "/";
@@ -166,12 +172,13 @@ btnDivide.addEventListener('click', e => {
         if (number2 === 0 && operator === "/") {
             alert("Error!")
         } else {
-            result = operate(operator, number1, number2)
-            number1 = result;
+            result = operate(operator, number1, number2);
             display.textContent = result;
+            number1 = result;
+            number2 = "";
             operator = "/";
         }
-    }
+    } lastButton = "/";
 });
 
 btnEqual.addEventListener('click', e => {
@@ -179,13 +186,17 @@ btnEqual.addEventListener('click', e => {
     e.target.style.backgroundColor = 'darkblue';
     setTimeout(() => {
         e.target.style.backgroundColor = 'blue';
-    }, 2000);
+    }, 1000);
     number2 = Number(display.textContent);
     if (number2 === 0) {
         alert("Error!")
     } else {
-        result = operate(operator, number1, number2)
-        number1 = result;
+        result = operate(operator, number1, number2);
         display.textContent = result;
+        number1 = "";
+        number2 = "";
+        operator = "";
+        result = "";
+        lastButton = "=";
     }
 })
